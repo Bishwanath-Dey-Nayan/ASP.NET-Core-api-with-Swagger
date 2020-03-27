@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrgDAL", "OrgDAL\OrgDAL.csproj", "{7A9249B8-01B2-4F77-88B1-DC0E8C9995DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrgAPI", "OrgAPI\OrgAPI.csproj", "{599D182B-F0BC-4576-AAEE-5FC08B19BFE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A9249B8-01B2-4F77-88B1-DC0E8C9995DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9249B8-01B2-4F77-88B1-DC0E8C9995DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9249B8-01B2-4F77-88B1-DC0E8C9995DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9249B8-01B2-4F77-88B1-DC0E8C9995DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599D182B-F0BC-4576-AAEE-5FC08B19BFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599D182B-F0BC-4576-AAEE-5FC08B19BFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599D182B-F0BC-4576-AAEE-5FC08B19BFE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599D182B-F0BC-4576-AAEE-5FC08B19BFE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B28E9B23-DB36-4485-AF8F-14750AAC0F5E}
+	EndGlobalSection
+EndGlobal
