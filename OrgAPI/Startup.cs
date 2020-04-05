@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using OrgDAL;
 
 namespace OrgAPI
@@ -41,9 +44,11 @@ namespace OrgAPI
             //    .AllowCredentials()
             //    )
             //    );
-            
+
             //For handling exception Application Level
-            services.AddMvc(config => config.Filters.Add(new AuthorizeFilter()));
+            //services.AddMvc(config => config.Filters.Add(new AuthorizeFilter()));
+
+            services.AddMvc();
 
 
 
@@ -53,22 +58,33 @@ namespace OrgAPI
             AddDefaultTokenProviders();
 
             //Giving status code for unauthorized Acccss
-            services.ConfigureApplicationCookie(opt => {
+            //services.ConfigureApplicationCookie(opt => {
 
-                opt.Events = new CookieAuthenticationEvents {
-                OnRedirectToLogin = redirectContext =>
-                {
-                    redirectContext.HttpContext.Response.StatusCode = 401;
-                    return Task.CompletedTask;
-                },
-                OnRedirectToAccessDenied = redirectContext =>
-                    {
-                        redirectContext.HttpContext.Response.StatusCode = 401;
-                        return Task.CompletedTask;
-                    }
-                };
-            });
+            //    opt.Events = new CookieAuthenticationEvents {
+            //    OnRedirectToLogin = redirectContext =>
+            //    {
+            //        redirectContext.HttpContext.Response.StatusCode = 401;
+            //        return Task.CompletedTask;
+            //    },
+            //    OnRedirectToAccessDenied = redirectContext =>
+            //        {
+            //            redirectContext.HttpContext.Response.StatusCode = 401;
+            //            return Task.CompletedTask;
+            //        }
+            //    };
+            //});
 
+            //jwt validation in middleware
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("This-is-my-sceret-key"));
+            var tokenValidationParameter = new TokenValidationParameters()
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                IssuerSigningKey = signingKey
+            };
+
+            services.AddAuthentication(x => x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(jwt => jwt.TokenValidationParameters = tokenValidationParameter);
 
             services.AddSwaggerDocument();
             services.AddControllers();

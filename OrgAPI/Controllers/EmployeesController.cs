@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,8 @@ using OrgDAL;
 
 namespace OrgAPI.Controllers
 {
-    [Authorize(Roles ="User,Admin")]
+    //[Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
+    [AllowAnonymous]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
@@ -25,7 +27,7 @@ namespace OrgAPI.Controllers
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<Employee>>> Get()
         {
             var Emps = await _context.Employees
                 //.Include(x => x.Department)

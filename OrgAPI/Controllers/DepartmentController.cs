@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,7 @@ using OrgDAL;
 
 namespace OrgAPI.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme,Roles ="Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class DepartmentController : ControllerBase
@@ -29,14 +30,18 @@ namespace OrgAPI.Controllers
         public IActionResult ALLDepartments()
         {
             var data = _dbContext.Departments.ToList();
-            int b = 0;
-            int a = 5 / b;
+            //int b = 0;
+            //int a = 5 / b;
             return Ok(data);
         }
 
         [HttpPost]
         public IActionResult PostDepartment(Object a)
         {
+            var claims = User.Claims.ToList();
+            //getting name from the jwt token
+            var name = User.Claims.Where(x => x.Type.Contains("claims/name")).FirstOrDefault().Value;
+            var id = User.Claims.Where(x => x.Type.Contains("claims/nameidentifier")).FirstOrDefault().Value;
             return StatusCode(201);
         }
 

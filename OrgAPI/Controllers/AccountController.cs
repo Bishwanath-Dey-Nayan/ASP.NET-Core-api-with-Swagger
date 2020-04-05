@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using OrgAPI.ViewModel;
 
 namespace OrgAPI.Controllers
@@ -74,8 +78,22 @@ namespace OrgAPI.Controllers
                 var signInResult = await signManager.PasswordSignInAsync(model.UserName, model.password, false, false);
                 if(signInResult.Succeeded)
                 {
-                   
-                    return Ok();
+                    var user = await userManager.FindByNameAsync(model.UserName);
+                    var roles = await userManager.GetRolesAsync(user);
+                    IdentityOptions identityOptions = new IdentityOptions();
+
+                    //Adding data to the token
+                    var claims = new Claim[]
+                    {
+                           new Claim(identityOptions.ClaimsIdentity.UserIdClaimType,user.Id),
+                           new Claim(identityOptions.ClaimsIdentity.UserNameClaimType, user.UserName),
+                           new Claim(identityOptions.ClaimsIdentity.RoleClaimType,roles[0])
+                    };
+
+                    var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("This-is-my-sceret-key"));
+                    var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+                    var jwt = new JwtSecurityToken(signingCredentials: signingCredentials,expires:DateTime.Now.AddMinutes(30),claims:claims);
+                    return Ok(new JwtSecurityTokenHandler().WriteToken(jwt));
                 }
             }
             return BadRequest(ModelState);
