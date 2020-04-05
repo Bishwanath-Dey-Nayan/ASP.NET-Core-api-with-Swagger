@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\.NET\\OrganizationServices\\OrgDAL\\OrgDAL.csproj": {}
+    "H:\\.NET\\ASP.NET-Core-api-with-Swagger\\OrgDAL\\OrgDAL.csproj": {}
   },
   "projects": {
-    "H:\\.NET\\OrganizationServices\\OrgDAL\\OrgDAL.csproj": {
+    "H:\\.NET\\ASP.NET-Core-api-with-Swagger\\OrgDAL\\OrgDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\.NET\\OrganizationServices\\OrgDAL\\OrgDAL.csproj",
+        "projectUniqueName": "H:\\.NET\\ASP.NET-Core-api-with-Swagger\\OrgDAL\\OrgDAL.csproj",
         "projectName": "OrgDAL",
-        "projectPath": "H:\\.NET\\OrganizationServices\\OrgDAL\\OrgDAL.csproj",
+        "projectPath": "H:\\.NET\\ASP.NET-Core-api-with-Swagger\\OrgDAL\\OrgDAL.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "H:\\.NET\\OrganizationServices\\OrgDAL\\obj\\",
+        "outputPath": "H:\\.NET\\ASP.NET-Core-api-with-Swagger\\OrgDAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -42,6 +42,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -49,6 +53,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
               "version": "[3.1.0, )"
             }

@@ -8,3 +8,13 @@ H:\.NET\OrganizationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.runtimeconfig
 H:\.NET\OrganizationServices\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.pdb
 H:\.NET\OrganizationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.dll
 H:\.NET\OrganizationServices\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.pdb
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.deps.json
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.runtimeconfig.json
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.runtimeconfig.dev.json
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.dll
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.AssemblyInfoInputs.cache
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.AssemblyInfo.cs
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.csprojAssemblyReference.cache
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\bin\Debug\netcoreapp3.1\OrgDAL.pdb
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.dll
+H:\.NET\ASP.NET-Core-api-with-Swagger\OrgDAL\obj\Debug\netcoreapp3.1\OrgDAL.pdb
