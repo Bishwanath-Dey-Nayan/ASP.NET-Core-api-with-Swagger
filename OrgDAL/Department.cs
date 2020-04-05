@@ -11,5 +11,7 @@ namespace OrgDAL
         public int Did { get; set; }
         public string DName { get; set; }
         public string  Description { get; set; }
+
+        public int CreatedBy { get; set; }
     }
 }

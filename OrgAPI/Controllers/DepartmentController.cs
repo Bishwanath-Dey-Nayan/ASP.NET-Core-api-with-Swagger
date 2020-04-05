@@ -4,21 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OrgDAL;
 
 namespace OrgAPI.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles ="Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class DepartmentController : ControllerBase
     {
         OrganizationDbContext _dbContext;
-        public DepartmentController(OrganizationDbContext dbContext)
+        UserManager<IdentityUser> userManager;
+        public DepartmentController(OrganizationDbContext dbContext, UserManager<IdentityUser> _userManager)
         {
             _dbContext = dbContext;
+            userManager = _userManager;
         }
 
         [HttpGet("ALLDepartments")]

@@ -60,7 +60,12 @@ namespace OrgAPI
                 {
                     redirectContext.HttpContext.Response.StatusCode = 401;
                     return Task.CompletedTask;
-                }
+                },
+                OnRedirectToAccessDenied = redirectContext =>
+                    {
+                        redirectContext.HttpContext.Response.StatusCode = 401;
+                        return Task.CompletedTask;
+                    }
                 };
             });
 

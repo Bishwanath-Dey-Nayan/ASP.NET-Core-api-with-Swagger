@@ -41,7 +41,12 @@ namespace OrgAPI.Controllers
                     var userResult = await userManager.CreateAsync(user, model.password);
                     if (userResult.Succeeded)
                     {
-                        return Ok(user);
+                        var roleResult = await userManager.AddToRoleAsync(user, "User");
+                        if (roleResult.Succeeded)
+                        {
+                            return Ok(user);
+                        }
+                       
                     }
                     else
                     {
@@ -69,12 +74,14 @@ namespace OrgAPI.Controllers
                 var signInResult = await signManager.PasswordSignInAsync(model.UserName, model.password, false, false);
                 if(signInResult.Succeeded)
                 {
+                   
                     return Ok();
                 }
             }
             return BadRequest(ModelState);
         }
 
+        [HttpPost("SignOut")]
         public async Task<IActionResult> SignOut()
         {
             await signManager.SignOutAsync();
